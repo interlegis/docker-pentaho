@@ -7,9 +7,8 @@ ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
 RUN . /etc/environment
-ENV PENTAHO_JAVA_HOME $JAVA_HOME
-ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
-ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 # Install Dependences
 RUN apt-get update; apt-get install zip netcat -y; \
@@ -26,18 +25,15 @@ USER pentaho
 
 # Download Pentaho BI Server
 RUN wget --progress=dot:giga https://downloads.sourceforge.net/project/pentaho/Pentaho%208.0/server/pentaho-server-ce-8.0.0.0-28.zip -O /tmp/pentaho-server.zip 
-#COPY pentaho-server-ce-8.0.0.0-28.zip /tmp/pentaho-server.zip
 
 RUN /usr/bin/unzip -q /tmp/pentaho-server.zip -d  $PENTAHO_HOME; \
     rm -f /tmp/pentaho-server.zip $PENTAHO_HOME/pentaho-server/promptuser.sh; \
     sed -i -e 's/\(exec ".*"\) start/\1 run/' $PENTAHO_HOME/pentaho-server/tomcat/bin/startup.sh; \
     chmod +x $PENTAHO_HOME/pentaho-server/start-pentaho.sh
 
-#COPY config $PENTAHO_HOME/config
-#COPY scripts $PENTAHO_HOME/scripts
+VOLUME /opt/pentaho-server/tomcat 
+VOLUME /opt/pentaho-server/pentaho-solutions       
 
-WORKDIR /opt/pentaho 
 EXPOSE 8080 
-ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+
 CMD ["sh", "pentaho-server/start-pentaho.sh"]
