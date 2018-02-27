@@ -27,9 +27,9 @@ RUN /usr/bin/unzip -q /tmp/pentaho-server.zip -d  $PENTAHO_HOME; \
     sed -i -e 's/\(exec ".*"\) start/\1 run/' $PENTAHO_HOME/pentaho-server/tomcat/bin/startup.sh; \
     chmod +x $PENTAHO_HOME/pentaho-server/start-pentaho.sh
 
-VOLUME /opt/pentaho-server/tomcat 
-VOLUME /opt/pentaho-server/pentaho-solutions       
+VOLUME $PENTAHO_HOME/pentaho-server/tomcat 
+VOLUME $PENTAHO_HOME/pentaho-server/pentaho-solutions       
 
 EXPOSE 8080 
 
-CMD ["sh", "/opt/pentaho-server/start-pentaho.sh"]
+CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho.sh"]
