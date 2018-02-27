@@ -25,7 +25,7 @@ RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chow
 USER pentaho
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget --progress=dot:giga https://downloads.sourceforge.net/project/pentaho/Pentaho%208.0/server/pentaho-server-ce-8.0.0.0-28.zip -O /tmp/pentaho-server.zip; 
+RUN /usr/bin/wget --progress=dot:giga https://downloads.sourceforge.net/project/pentaho/Pentaho%208.0/server/pentaho-server-ce-8.0.0.0-28.zip -O /tmp/pentaho-server.zip 
 #COPY pentaho-server-ce-8.0.0.0-28.zip /tmp/pentaho-server.zip
 
 RUN /usr/bin/unzip -q /tmp/pentaho-server.zip -d  $PENTAHO_HOME; \
