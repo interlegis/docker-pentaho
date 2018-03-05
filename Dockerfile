@@ -32,4 +32,4 @@ VOLUME $PENTAHO_HOME/pentaho-server/pentaho-solutions
 
 EXPOSE 8080 
 
-CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho.sh"]
+CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho-debug.sh"]
