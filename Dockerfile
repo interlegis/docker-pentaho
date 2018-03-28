@@ -17,6 +17,8 @@ RUN apt-get update; apt-get install zip netcat -y; \
 
 RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chown pentaho:pentaho ${PENTAHO_HOME}
 
+COPY accessibility.properties /etc/java-8-openjdk/
+
 USER pentaho
 
 # Download Pentaho BI Server
