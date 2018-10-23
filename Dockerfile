@@ -22,7 +22,7 @@ COPY accessibility.properties /etc/java-8-openjdk/
 USER pentaho
 
 # Download Pentaho BI Server
-RUN wget --progress=dot:giga https://downloads.sourceforge.net/project/pentaho/Pentaho%208.0/server/pentaho-server-ce-8.0.0.0-28.zip -O /tmp/pentaho-server.zip 
+RUN wget --progress=dot:giga https://downloads.sourceforge.net/project/pentaho/Pentaho%208.1/server/pentaho-server-ce-8.1.0.0-365.zip -O /tmp/pentaho-server.zip 
 
 RUN /usr/bin/unzip -q /tmp/pentaho-server.zip -d  $PENTAHO_HOME; \
     rm -f /tmp/pentaho-server.zip $PENTAHO_HOME/pentaho-server/promptuser.sh; \
