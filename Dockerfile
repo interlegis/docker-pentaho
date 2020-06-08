@@ -29,6 +29,8 @@ RUN /usr/bin/unzip -q /tmp/pentaho-server.zip -d  $PENTAHO_HOME; \
     sed -i -e 's/\(exec ".*"\) start/\1 run/' $PENTAHO_HOME/pentaho-server/tomcat/bin/startup.sh; \
     chmod +x $PENTAHO_HOME/pentaho-server/start-pentaho.sh
 
+COPY ojdbc6.jar $PENTAHO_HOME/pentaho-server/tomcat/lib/
+
 EXPOSE 8080 
 
 CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho.sh"]
