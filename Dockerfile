@@ -7,8 +7,8 @@ ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
 RUN . /etc/environment
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV JAVA_HOME /usr/local/openjdk-8/bin/java
+ENV PENTAHO_JAVA_HOME /usr/local/openjdk-8/bin/java
 
 # Install Dependences
 RUN apt-get update; apt-get install zip netcat -y; \
